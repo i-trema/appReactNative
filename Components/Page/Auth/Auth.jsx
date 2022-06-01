@@ -6,7 +6,7 @@ import Card from "../../HOC/Card/Card";
 import ButtonLink from "../../UI/ButtonLink/ButtonLink";
 
 export default function Auth() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
 
   function toggleIsLogin() {
     setIsLogin(!isLogin);

@@ -64,7 +64,7 @@ const InputWithError = ({
             onPress={toggleIsPasswordHidden}
           >
             <Entypo
-              name={isPasswordHidden ? "eye" : "eye-with-line"}
+              name={isPasswordHidden ? "eye-with-line" : "eye"}
               size={24}
               color={
                 isPasswordHidden

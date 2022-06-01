@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     padding: 15,
     color: STYLES_VARIABLES.LIGHT_COLOR,
     fontSize: 20,
+    textAlign: "center",
   },
   childrenContainer: {
     backgroundColor: STYLES_VARIABLES.GREY_COLOR,
