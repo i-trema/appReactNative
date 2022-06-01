@@ -12,7 +12,7 @@ export default function App() {
   const fakeUser = {
     email: "test@email.com",
     username: "Jo Jo",
-    description: "description test",
+    // description: "description test",
   };
   const [user, setUser] = useState(fakeUser);
 

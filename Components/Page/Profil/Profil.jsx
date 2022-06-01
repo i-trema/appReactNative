@@ -1,13 +1,25 @@
 import { useContext } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+  View,
+} from "react-native";
 import { UserContext } from "../../../contexts/UserContext";
 import { STYLES_VARIABLES } from "../../../variables/stylesVariables";
-
+import defaultAvatar from "../../../assets/default_avatar.png";
 export default function Profil() {
   const { user, setUser } = useContext(UserContext);
 
+  const sizes = useWindowDimensions();
+  console.log(sizes);
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <View>
+      <View>
+        <Image style={styles.image} source={defaultAvatar} />
+      </View>
       <View style={styles.container}>
         <View style={styles.textContainer}>
           <Text style={styles.title}>Email: </Text>
@@ -27,11 +39,15 @@ export default function Profil() {
           </Text>
         </View>
       </View>
-    </UserContext.Provider>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  image: {
+    alignSelf: "center",
+    margin: 20,
+  },
   container: {
     marginHorizontal: 30,
     marginVertical: 40,
@@ -48,7 +64,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   textContainer: {
-    borderBottomColor: STYLES_VARIABLES.DARK_COLOR,
+    borderBottomColor: STYLES_VARIABLES.DARK_GREY_COLOR,
     borderBottomWidth: 1,
     paddingVertical: 15,
   },
