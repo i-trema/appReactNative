@@ -1,18 +1,35 @@
+import { useState } from "react";
 import { Text, View } from "react-native";
+import Login from "../../Container/Login/Login";
+import Signup from "../../Container/Signup/Signup";
 import Card from "../../HOC/Card/Card";
+import ButtonLink from "../../UI/ButtonLink/ButtonLink";
 
 export default function Auth() {
-  const bienvenue = {
-    title: "Bienvenue !",
-    content: "Veuillez vous authentifier",
-    // children: (
-    //   <Text style={{ backgroundColor: "white" }}>composant potentiel</Text>
-    // ),
-  };
+  const [isLogin, setIsLogin] = useState(true);
+
+  function toggleIsLogin() {
+    setIsLogin(!isLogin);
+  }
+
   return (
     <View>
-      <Card {...bienvenue}>
-        <Text>Composant potentiel</Text>
+      <Card
+        title="Bienvenue"
+        content={`Veuillez vous ${isLogin ? "connecter" : "inscrire"}...`}
+      >
+        {isLogin ? <Login /> : <Signup />}
+        <Text onPress={toggleIsLogin}>
+          {/* {isLogin
+            ? "Pas encore membre ? Inscrivez-vous !"
+            : "Déjà membre ? Connectez-vous !"} */}
+        </Text>
+
+        <ButtonLink action={toggleIsLogin}>
+          {isLogin
+            ? "Pas encore membre ? Inscrivez-vous !"
+            : "Déjà membre ? Connectez-vous !"}
+        </ButtonLink>
       </Card>
     </View>
   );

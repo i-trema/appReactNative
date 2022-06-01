@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
+import { STYLES_VARIABLES } from "../../../variables/stylesVariables";
 
 //// composant Card, avec ses "props", qui retourne du JSX.
 export default function Card(props) {
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
     margin: 30,
   },
   container: {
-    backgroundColor: "#2C3e50",
+    backgroundColor: STYLES_VARIABLES.PRIMARY_COLOR,
     borderRadius: 5,
     textAlign: "center",
   },
@@ -30,15 +31,15 @@ const styles = StyleSheet.create({
     padding: 20,
     fontWeight: "bold",
     fontSize: 30,
-    color: "whitesmoke",
+    color: STYLES_VARIABLES.LIGHT_COLOR,
   },
   content: {
     padding: 15,
-    color: "whitesmoke",
+    color: STYLES_VARIABLES.LIGHT_COLOR,
     fontSize: 20,
   },
   childrenContainer: {
-    backgroundColor: "rgb(220,220,220)",
+    backgroundColor: STYLES_VARIABLES.GREY_COLOR,
     padding: 15,
   },
 });
