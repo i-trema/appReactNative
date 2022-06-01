@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import InputWithError from "../../UI/InputWithError/InputWithError";
 import { AntDesign } from "@expo/vector-icons";
 import Button from "../../UI/Button/Button";
 import { STYLES_VARIABLES } from "../../../variables/stylesVariables";
+import { UserContext } from "../../../contexts/UserContext";
 
 const Signup = () => {
+  const { user, setUser } = useContext(UserContext);
+
   const [emailInput, setEmailInput] = useState("");
   const [emailError, setEmailError] = useState("");
 
@@ -42,7 +45,7 @@ const Signup = () => {
       passwordInput.length >= 6 &&
       confirmPasswordInput == passwordInput
     ) {
-      alert("Inscription réussie " + usernameInput + " !");
+      setUser({ email: emailInput, username: usernameInput });
     } else {
       setEmailError(emailInput.includes("@") ? "" : "Email invalide !");
       if (usernameInput.length < 3) {
