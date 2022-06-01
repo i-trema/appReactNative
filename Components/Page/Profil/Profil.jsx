@@ -5,10 +5,13 @@ import {
   Text,
   useWindowDimensions,
   View,
+  TouchableOpacity,
 } from "react-native";
 import { UserContext } from "../../../contexts/UserContext";
 import { STYLES_VARIABLES } from "../../../variables/stylesVariables";
 import defaultAvatar from "../../../assets/default_avatar.png";
+import { MaterialIcons } from "@expo/vector-icons";
+
 export default function Profil() {
   const { user, setUser } = useContext(UserContext);
 
@@ -16,9 +19,29 @@ export default function Profil() {
   console.log(sizes);
 
   return (
-    <View>
+    <View style={{ width: "100%" }}>
       <View>
-        <Image style={styles.image} source={defaultAvatar} />
+        <Image
+          style={[styles.image, { width: sizes.width, height: sizes.width }]}
+          source={defaultAvatar}
+        />
+
+        <View style={styles.iconsContainer}>
+          <TouchableOpacity>
+            <MaterialIcons
+              name="photo-library"
+              size={50}
+              color={STYLES_VARIABLES.PRIMARY_COLOR}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <MaterialIcons
+              name="photo-camera"
+              size={50}
+              color={STYLES_VARIABLES.PRIMARY_COLOR}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.container}>
         <View style={styles.textContainer}>
@@ -47,6 +70,20 @@ const styles = StyleSheet.create({
   image: {
     alignSelf: "center",
     margin: 20,
+    maxWidth: 300,
+    maxHeight: 300,
+  },
+  iconsContainer: {
+    display: "flex",
+    flexDirection: "row",
+    backgroundColor: STYLES_VARIABLES.GREY_COLOR,
+    maxWidth: 300,
+    alignSelf: "center",
+    width: "100%",
+    justifyContent: "space-around",
+    padding: 5,
+    margin: 10,
+    borderRadius: 10,
   },
   container: {
     marginHorizontal: 30,
