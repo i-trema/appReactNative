@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     margin: 20,
     maxWidth: 300,
     maxHeight: 300,
-    borderRadius: "50%",
+    borderRadius: 150,
   },
   iconsContainer: {
     display: "flex",
