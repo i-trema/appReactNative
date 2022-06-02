@@ -1,5 +1,6 @@
 const THEME_DARK = {
   PRIMARY_COLOR: "#2c3e50",
+  SECONDARY_COLOR: "#A36600",
   SUCCESS_COLOR: "green",
   DANGER_COLOR: "red",
   LIGHT_COLOR: "whitesmoke",
@@ -10,6 +11,7 @@ const THEME_DARK = {
 
 const THEME_LIGHT = {
   PRIMARY_COLOR: "orange",
+  SECONDARY_COLOR: "#A36600",
   SUCCESS_COLOR: "green",
   DANGER_COLOR: "red",
   LIGHT_COLOR: "rgb(25,25,25)",
