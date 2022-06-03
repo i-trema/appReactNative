@@ -27,7 +27,7 @@ const ProfilStack = () => {
 
       <Stack.Screen
         options={{ title: "Modifiez vos informations" }}
-        name="editInfos"
+        name="edit_infos"
         component={EditInfos}
       />
     </Stack.Navigator>

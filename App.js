@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
+import GlobalDrawer from "./Components/Drawer/GlobalDrawer";
 
 //// on importe la default function avec un nom au choix, sans accolades,
 //// on importe les autres fonctions entre accolades.
@@ -23,7 +24,7 @@ export default function App() {
     <UserContext.Provider value={{ user, setUser }}>
       <View style={styles.container}>
         <NavigationContainer>
-          {user ? <ProfilStack /> : <Auth />}
+          {user ? <GlobalDrawer /> : <Auth />}
         </NavigationContainer>
       </View>
     </UserContext.Provider>
@@ -32,7 +33,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: "100%",
     backgroundColor: "#fff",
     justifyContent: "center",
   },

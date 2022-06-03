@@ -13,6 +13,7 @@ import defaultAvatar from "../../../assets/default_avatar.png";
 import { MaterialIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import Button from "../../UI/Button/Button";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function Profil({ route, navigation }) {
   // console.log(props);
@@ -38,9 +39,9 @@ export default function Profil({ route, navigation }) {
     navigation.push("camera");
   }
 
-  function goEdit() {
+  function goEditInfos() {
     console.log("goEdit ok");
-    navigation.push("editInfos");
+    navigation.push("edit_infos");
   }
 
   return (
@@ -86,7 +87,13 @@ export default function Profil({ route, navigation }) {
               : "Veuillez entrer une description..."}
           </Text>
         </View>
-        <Button label="Modifiez vos informations" action={goEdit}></Button>
+        <Button label="Modifiez vos informations" action={goEditInfos}>
+          <Ionicons
+            name="settings"
+            size={24}
+            color={STYLES_VARIABLES.LIGHT_COLOR}
+          ></Ionicons>
+        </Button>
       </View>
     </View>
   );
