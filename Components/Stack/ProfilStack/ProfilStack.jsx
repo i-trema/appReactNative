@@ -15,7 +15,7 @@ const ProfilStack = () => {
       }}
     >
       <Stack.Screen
-        options={{ title: "Votre page de profil" }}
+        options={{ title: "Votre page de profil", headerShown: false }}
         name="profil"
         component={Profil}
       />

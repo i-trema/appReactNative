@@ -6,6 +6,7 @@ import {
   useWindowDimensions,
   View,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { UserContext } from "../../../contexts/UserContext";
 import { STYLES_VARIABLES } from "../../../variables/stylesVariables";
@@ -45,7 +46,7 @@ export default function Profil({ route, navigation }) {
   }
 
   return (
-    <View style={{ width: "100%" }}>
+    <ScrollView style={{ width: "100%" }}>
       <View>
         <Image
           style={[styles.image, { width: sizes.width, height: sizes.width }]}
@@ -95,7 +96,7 @@ export default function Profil({ route, navigation }) {
           ></Ionicons>
         </Button>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
