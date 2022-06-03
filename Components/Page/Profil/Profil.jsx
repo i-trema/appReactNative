@@ -12,6 +12,7 @@ import { STYLES_VARIABLES } from "../../../variables/stylesVariables";
 import defaultAvatar from "../../../assets/default_avatar.png";
 import { MaterialIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
+import Button from "../../UI/Button/Button";
 
 export default function Profil({ route, navigation }) {
   // console.log(props);
@@ -35,6 +36,11 @@ export default function Profil({ route, navigation }) {
 
   function goCamera() {
     navigation.push("camera");
+  }
+
+  function goEdit() {
+    console.log("goEdit ok");
+    navigation.push("editInfos");
   }
 
   return (
@@ -80,21 +86,33 @@ export default function Profil({ route, navigation }) {
               : "Veuillez entrer une description..."}
           </Text>
         </View>
+        <Button label="Modifiez vos informations" action={goEdit}></Button>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+    margin: 10,
+    width: "100%",
+    maxWidth: 300,
+    backgroundColor: STYLES_VARIABLES.GREY_COLOR,
+    borderBottomWidth: 2,
+    borderBottomColor: STYLES_VARIABLES.PRIMARY_COLOR,
+    borderTopWidth: 2,
+    borderTopColor: STYLES_VARIABLES.PRIMARY_COLOR,
+    alignSelf: "center",
+  },
   image: {
     alignSelf: "center",
     margin: 20,
-    maxWidth: 300,
-    maxHeight: 300,
+    maxWidth: 200,
+    maxHeight: 200,
     borderRadius: 150,
   },
   iconsContainer: {
-    display: "flex",
     flexDirection: "row",
     backgroundColor: STYLES_VARIABLES.GREY_COLOR,
     maxWidth: 300,
@@ -105,17 +123,7 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 10,
   },
-  container: {
-    padding: 20,
-    width: "100%",
-    maxWidth: 300,
-    backgroundColor: STYLES_VARIABLES.GREY_COLOR,
-    borderBottomWidth: 2,
-    borderBottomColor: STYLES_VARIABLES.PRIMARY_COLOR,
-    borderTopWidth: 2,
-    borderTopColor: STYLES_VARIABLES.PRIMARY_COLOR,
-    alignSelf: "center",
-  },
+
   title: {
     color: STYLES_VARIABLES.PRIMARY_COLOR,
     fontWeight: "bold",

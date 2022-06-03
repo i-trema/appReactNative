@@ -1,6 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { STYLES_VARIABLES } from "../../../variables/stylesVariables";
 import Cam from "../../Page/Cam/Cam";
+import EditInfos from "../../Page/EditInfos/EditInfos";
 import Profil from "../../Page/Profil/Profil";
 
 const Stack = createStackNavigator();
@@ -14,14 +15,20 @@ const ProfilStack = () => {
       }}
     >
       <Stack.Screen
+        options={{ title: "Votre page de profil" }}
+        name="profil"
+        component={Profil}
+      />
+      <Stack.Screen
         options={{ title: "Prenez une photo" }}
         name="camera"
         component={Cam}
       />
+
       <Stack.Screen
-        options={{ title: "Votre page de profil" }}
-        name="profil"
-        component={Profil}
+        options={{ title: "Modifiez vos informations" }}
+        name="editInfos"
+        component={EditInfos}
       />
     </Stack.Navigator>
   );

@@ -7,16 +7,20 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Camera, CameraType } from "expo-camera";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { STYLES_VARIABLES } from "../../../variables/stylesVariables";
 import { Feather } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { UserContext } from "../../../contexts/UserContext";
+import Slider from "@react-native-community/slider";
 
 const Cam = ({ route, navigation }) => {
   const [cameraPermission, setCameraPermission] = useState(null);
   const [cameraType, setCameraType] = useState(CameraType.back);
   const [isFlashOn, setIsFlashOn] = useState(false);
+  const [zoom, setZoom] = useState(0);
   const cameraRef = useRef();
+  const { user, setUser } = useContext(UserContext);
 
   function toggleCameraType() {
     setCameraType(
@@ -26,6 +30,12 @@ const Cam = ({ route, navigation }) => {
 
   function toggleFlash() {
     setIsFlashOn(!isFlashOn);
+  }
+
+  function handleZoom(value) {
+    // console.log("fonction handleZoom" + value);
+
+    setZoom(value);
   }
 
   const sizes = useWindowDimensions();
@@ -63,22 +73,38 @@ const Cam = ({ route, navigation }) => {
   }
 
   async function takePicture() {
-    const picture = cameraRef.current.takePictureAsync();
+    const picture = await cameraRef.current.takePictureAsync();
     console.log(picture);
     //1- Utiliser le contexte pour mettre picture dans avatar de user.
-
+    setUser({ ...user, avatar: picture });
     //2- Retourner en arriere (Profil)
+    if (navigation.canGoBack()) {
+      navigation.pop();
+    }
   }
 
   return (
     <View style={styles.container}>
       <Camera
+        zoom={zoom}
         ref={cameraRef}
         flashMode={isFlashOn ? "torch" : "off"}
         type={cameraType}
         ratio="16:9"
         style={{ width: sizes.width, height: (sizes.width * 16) / 9 }}
       >
+        <Slider
+          style={styles.slider}
+          vertical={true}
+          value={zoom}
+          onValueChange={handleZoom}
+          minimumValue={0}
+          maximumValue={1}
+          onSlidingComplete={handleZoom}
+          maximumTrackTintColor={STYLES_VARIABLES.LIGHT_COLOR}
+          minimumTrackTintColor={STYLES_VARIABLES.PRIMARY_COLOR}
+          thumbTintColor={STYLES_VARIABLES.SECONDARY_COLOR}
+        />
         <View style={styles.iconsContainer}>
           <TouchableOpacity onPress={toggleCameraType}>
             <MaterialIcons
@@ -128,6 +154,13 @@ const styles = StyleSheet.create({
     bottom: 100,
     borderRadius: 500,
     padding: 10,
+  },
+  slider: {
+    color: STYLES_VARIABLES.PRIMARY_COLOR,
+    width: "75%",
+    alignSelf: "center",
+    position: "absolute",
+    bottom: 200,
   },
 });
 
